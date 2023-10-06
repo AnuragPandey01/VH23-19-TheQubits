@@ -74,8 +74,7 @@ class _LoginPageState extends State<LoginPage> {
             Btn(
               text: "Log In",
               onTap: () async {
-                var valid = await login(email.text, password.text);
-                inspect(valid);
+                await login(email.text, password.text, context);
               },
             ),
             const SizedBox(

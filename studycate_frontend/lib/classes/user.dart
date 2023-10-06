@@ -1,16 +1,16 @@
 class User {
-  final String firstName;
-  final String lastName;
-  final String email;
-  final String profileImg;
-  final String instName;
-  final bool isClgStud;
-  final String branch;
-  final int year;
-  final List<String> groups;
-  final String password;
+  final String? firstName;
+  final String? lastName;
+  final String? email;
+  final String? profileImg;
+  final String? instName;
+  final bool? isClgStud;
+  final String? branch;
+  final int? year;
+  final List<String>? groups;
+  final String? password;
 
-  User(
+  User({
     this.firstName,
     this.lastName,
     this.email,
@@ -21,7 +21,7 @@ class User {
     this.year,
     this.groups,
     this.password,
-  );
+  });
 
   User.fromJson(Map<String, dynamic> json)
       : firstName = json['firstName'],

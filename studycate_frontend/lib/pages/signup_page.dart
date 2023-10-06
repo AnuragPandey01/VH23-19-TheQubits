@@ -150,18 +150,18 @@ class _SignUpPageState extends State<SignUpPage> {
                       onTap: () async {
                         if (password.text == confirmPassword.text) {
                           User user = User(
-                            firstName.text,
-                            lastName.text,
-                            email.text,
-                            "",
-                            instName.text,
-                            false,
-                            "",
-                            0,
-                            [],
-                            password.text,
+                            firstName: firstName.text,
+                            lastName: lastName.text,
+                            email: email.text,
+                            profileImg: "",
+                            instName: instName.text,
+                            isClgStud: false,
+                            branch: "",
+                            year: 0,
+                            groups: [],
+                            password: password.text,
                           );
-                          var x = await signUp(user);
+                          await signUp(user, context);
                         }
                       },
                     ),
@@ -272,18 +272,18 @@ class _SignUpPageState extends State<SignUpPage> {
                       onTap: () async {
                         if (password.text == confirmPassword.text) {
                           User user = User(
-                            firstName.text,
-                            lastName.text,
-                            email.text,
-                            "",
-                            instName.text,
-                            true,
-                            branch.text,
-                            int.parse(year.text),
-                            [],
-                            password.text,
+                            firstName: firstName.text,
+                            lastName: lastName.text,
+                            email: email.text,
+                            profileImg: "",
+                            instName: instName.text,
+                            isClgStud: true,
+                            branch: branch.text,
+                            year: int.parse(year.text),
+                            groups: [],
+                            password: password.text,
                           );
-                          var x = await signUp(user);
+                          await signUp(user, context);
                         }
                       },
                     ),
