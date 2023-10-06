@@ -39,4 +39,5 @@ dependencies {
     implementation("io.ktor:ktor-server-netty-jvm")
     implementation("ch.qos.logback:logback-classic:$logback_version")
     implementation("com.zaxxer:HikariCP:5.0.1")
+    implementation("org.jetbrains.exposed:exposed-java-time:$exposed_version")
 }

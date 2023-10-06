@@ -27,7 +27,6 @@ data class User(
     val grade: Int?,
     val branch : String?,
     val year : Int?,
-    val groups: List<String>
 )
 
 object Users : UUIDTable() {
@@ -41,4 +40,12 @@ object Users : UUIDTable() {
     val year = integer("year").nullable()
     val password = varchar("password", length = 50)
     val profileUrl = varchar("profileUrl", length = 50).default("https://api.dicebear.com/7.x/fun-emoji/png")
+}
+
+object UserGroupsMapping : UUIDTable() {
+    val userId = reference("userId", Users.id)
+    val groupId = reference("groupId", ChatGroups.id)
+    val isAdmin = bool("isAdmin").default(false)
+    val isCreator = bool("isCreator").default(false)
+    val isMember = bool("isMember").default(false)
 }

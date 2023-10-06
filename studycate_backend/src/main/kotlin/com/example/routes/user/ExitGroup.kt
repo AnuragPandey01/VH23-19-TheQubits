@@ -1,21 +1,20 @@
 package com.example.routes.user
 
 import com.example.dao.userService
-import com.example.model.SignupUser
 import com.example.util.badReqRes
-import com.example.util.createdRes
+import com.example.util.okRes
 import com.example.util.serverErrRes
 import io.ktor.server.application.*
 import io.ktor.server.request.*
 import io.ktor.server.routing.*
 
-fun Route.registerUserRoutes(){
+fun Route.exitGroupRoute(){
 
-    post ("/register"){
+    post ("/exitGroup"){
         try{
-            val signupUser = call.receive<SignupUser>()
-            val resUser = userService.create(signupUser)
-            call.createdRes(resUser)
+            val req = call.receive<ExitGroupRequest>()
+            userService.exitGroup(userId = req.id, groupId = req.groupId)
+            call.okRes("Successfully exited group")
         }catch (e: IllegalArgumentException){
             call.badReqRes(e.message?:"Invalid Arguments")
         }catch (e:ContentTransformationException){
@@ -25,3 +24,8 @@ fun Route.registerUserRoutes(){
         }
     }
 }
+
+data class ExitGroupRequest(
+    val id: String,
+    val groupId: String
+)

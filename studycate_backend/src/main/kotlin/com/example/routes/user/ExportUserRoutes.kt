@@ -6,5 +6,8 @@ fun Route.exportUserRoutes() {
     route("/user") {
         registerUserRoutes()
         loginUserRoute()
+        userChatGroups()
+        joinGroupRoute()
+        exitGroupRoute()
     }
 }
