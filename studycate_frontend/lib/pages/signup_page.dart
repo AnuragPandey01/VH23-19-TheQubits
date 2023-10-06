@@ -158,7 +158,6 @@ class _SignUpPageState extends State<SignUpPage> {
                             isClgStud: false,
                             branch: "",
                             year: 0,
-                            groups: [],
                             password: password.text,
                           );
                           await signUp(user, context);
@@ -280,7 +279,6 @@ class _SignUpPageState extends State<SignUpPage> {
                             isClgStud: true,
                             branch: branch.text,
                             year: int.parse(year.text),
-                            groups: [],
                             password: password.text,
                           );
                           await signUp(user, context);

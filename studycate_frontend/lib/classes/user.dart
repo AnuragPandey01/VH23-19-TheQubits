@@ -7,7 +7,6 @@ class User {
   final bool? isClgStud;
   final String? branch;
   final int? year;
-  final List<String>? groups;
   final String? password;
 
   User({
@@ -19,7 +18,6 @@ class User {
     this.isClgStud,
     this.branch,
     this.year,
-    this.groups,
     this.password,
   });
 
@@ -32,7 +30,6 @@ class User {
         isClgStud = json['isClgStud'],
         branch = json['branch'],
         year = json['year'],
-        groups = json['groups'],
         password = json['password'];
 
   Map<String, dynamic> toJson() => {
@@ -44,7 +41,6 @@ class User {
         'isClgStud': isClgStud,
         'branch': branch,
         'year': year,
-        'groups': groups,
         'password': password,
       };
 }

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -19,8 +20,18 @@ Future<void> login(String email, String password, BuildContext context) async {
   );
   if (response.statusCode == 200) {
     Navigator.of(context).popAndPushNamed('/home');
+    var responsee = await http.post(
+      groupsUri,
+      headers: {"Content-Type": "application/json"},
+      body: jsonEncode({
+        "userId": "38b8fc0c-0a9f-46c6-8177-fc01d49ad332",
+      }),
+    );
+    inspect(responsee);
+    //38b8fc0c-0a9f-46c6-8177-fc01d49ad332
   } else {
-    errorDlg(context, "Error", jsonDecode(response.body)['msg']);
+    inspect(response);
+    errorDlg(context, "Error", jsonDecode(response.body)['error']);
   }
 }
 
@@ -41,7 +52,9 @@ errorDlg(BuildContext context, String title, String content) {
   // set up the button
   Widget okButton = TextButton(
     child: const Text("OK"),
-    onPressed: () {},
+    onPressed: () {
+      Navigator.of(context).pop();
+    },
   );
 
   // set up the AlertDialog
