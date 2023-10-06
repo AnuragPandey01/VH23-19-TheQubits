@@ -201,7 +201,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                                     //Navigator.pushReplacementNamed(context, '/');
                                   }
                                 },
-                                text: "Continue",
+                                text: name,
                               );
                             },
                           ),
