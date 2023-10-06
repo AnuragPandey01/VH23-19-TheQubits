@@ -28,6 +28,6 @@ flutter:
   fonts:
     - family: Inter
       fonts:
-        - asset: fonts/Inter-Variable.ttf
+        - asset: fonts/inter/Inter-Variable.ttf
   #         style: italic
   #         weight: 700
