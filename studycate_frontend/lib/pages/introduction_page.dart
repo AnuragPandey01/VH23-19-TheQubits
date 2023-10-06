@@ -163,73 +163,76 @@ class _IntroductionPageState extends State<IntroductionPage> {
           })),
           Consumer(
             builder: (context, ref, child) {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SmoothPageIndicator(
-                    effect: ExpandingDotsEffect(
-                      dotColor: Colors.grey.shade500,
-                      activeDotColor: Colors.white,
-                      dotHeight: size.height * 0.01,
-                      dotWidth: 10,
-                    ),
-                    controller: _controller,
-                    count: 3,
-                  ),
-                  SizedBox(height: size.height * 0.03),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        width: size.width - 100,
-                        child: Consumer(
-                          builder: (context, ref, child) {
-                            final name = ref.watch(btnName);
-                            return FilledButton(
-                              onPressed: () {
-                                if (name == "Continue") {
-                                  _controller.nextPage(
-                                      duration:
-                                          const Duration(milliseconds: 500),
-                                      curve: Curves.easeInOut);
-                                } else {
-                                  Navigator.pushNamed(context, '/login');
-                                  //Navigator.pushReplacementNamed(context, '/');
-                                }
-                              },
-                              style: ButtonStyle(
-                                backgroundColor:
-                                    const MaterialStatePropertyAll<Color>(
-                                        Colors.white),
-                                shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    //side: BorderSide(color: Colors.red),
-                                  ),
-                                ),
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 10,
-                                  vertical: size.height * 0.02,
-                                ),
-                                child: Text(
-                                  name,
-                                  style: TextStyle(
-                                    fontSize: 22,
-                                    color: Colors.pink.shade800,
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
+              return Align(
+                alignment: Alignment(0, 0.8),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SmoothPageIndicator(
+                      effect: ExpandingDotsEffect(
+                        dotColor: Colors.grey.shade500,
+                        activeDotColor: Colors.white,
+                        dotHeight: size.height * 0.01,
+                        dotWidth: 10,
                       ),
-                    ],
-                  ),
-                ],
+                      controller: _controller,
+                      count: 3,
+                    ),
+                    SizedBox(height: size.height * 0.03),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: size.width - 100,
+                          child: Consumer(
+                            builder: (context, ref, child) {
+                              final name = ref.watch(btnName);
+                              return FilledButton(
+                                onPressed: () {
+                                  if (name == "Continue") {
+                                    _controller.nextPage(
+                                        duration:
+                                            const Duration(milliseconds: 500),
+                                        curve: Curves.easeInOut);
+                                  } else {
+                                    Navigator.pushNamed(context, '/login');
+                                    //Navigator.pushReplacementNamed(context, '/');
+                                  }
+                                },
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      const MaterialStatePropertyAll<Color>(
+                                          Colors.white),
+                                  shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      //side: BorderSide(color: Colors.red),
+                                    ),
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 10,
+                                    vertical: size.height * 0.02,
+                                  ),
+                                  child: Text(
+                                    name,
+                                    style: TextStyle(
+                                      fontSize: 22,
+                                      color: Colors.pink.shade800,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               );
             },
           )
