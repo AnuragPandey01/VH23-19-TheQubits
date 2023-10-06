@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
           automaticallyImplyLeading: false,
           backgroundColor: Colors.transparent,
           title: const Padding(
-            padding: EdgeInsets.only(top: 20.0),
+            padding: EdgeInsets.only(left: 15.0),
             child: Text(
               "Groups",
               style: TextStyle(
@@ -43,11 +43,18 @@ class _HomePageState extends State<HomePage> {
                 color: textColor,
               ),
             ),
-            IconButton(
-              onPressed: () {},
-              icon: Image.network(
-                loggedInUser.profileImg!,
-                color: textColor,
+            Padding(
+              padding: const EdgeInsets.only(right: 20.0),
+              child: IconButton(
+                onPressed: () {
+                  Navigator.of(context).popAndPushNamed('/login');
+                },
+                icon: ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(35)),
+                  child: Image.network(
+                    loggedInUser.profileImg!,
+                  ),
+                ),
               ),
             ),
           ],
@@ -58,6 +65,7 @@ class _HomePageState extends State<HomePage> {
           child: ListView.separated(
             itemBuilder: (context, index) {
               return ListTile(
+                onTap: () {},
                 contentPadding: const EdgeInsets.symmetric(horizontal: 24),
                 shape: RoundedRectangleBorder(
                   side: const BorderSide(width: 2),
