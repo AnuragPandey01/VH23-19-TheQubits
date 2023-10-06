@@ -3,7 +3,8 @@ import 'package:studycate/constants.dart';
 
 class Btn extends StatefulWidget {
   final String text;
-  const Btn({required this.text, super.key});
+  final VoidCallback onTap;
+  const Btn({required this.text, required this.onTap, super.key});
 
   @override
   State<Btn> createState() => _BtnState();
@@ -13,9 +14,7 @@ class _BtnState extends State<Btn> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        print("hellol");
-      },
+      onTap: widget.onTap,
       child: Container(
         height: 60.0,
         decoration: const BoxDecoration(

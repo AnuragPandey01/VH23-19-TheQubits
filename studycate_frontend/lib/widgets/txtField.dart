@@ -44,7 +44,7 @@ class _TxtFieldState extends State<TxtField> {
                 ),
                 obscureText: visible,
                 decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.all(16),
+                  contentPadding: const EdgeInsets.all(14),
                   border: const OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(15)),
                     borderSide: BorderSide(width: 5, color: textColor),
@@ -93,7 +93,7 @@ Widget noToggle(hintText, controller) {
       fontWeight: FontWeight.w400,
     ),
     decoration: InputDecoration(
-      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
       border: const OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(15)),
         borderSide: BorderSide(width: 5, color: textColor),

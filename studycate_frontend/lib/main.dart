@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:studycate/pages/introduction_page.dart';
 import 'package:studycate/pages/login_page.dart';
 import 'package:studycate/pages/signup_page.dart';
@@ -12,26 +13,28 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'StudyCate',
-      routes: {
-        '/intro': (context) => const IntroductionPage(),
-        '/login': (context) => const LoginPage(),
-        '/signup': (context) => const SignUpPage(),
-      },
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFFD76528)),
-        pageTransitionsTheme: const PageTransitionsTheme(
-          builders: {
-            TargetPlatform.android: CupertinoPageTransitionsBuilder(),
-          },
+    return ProviderScope(
+      child: MaterialApp(
+        title: 'StudyCate',
+        routes: {
+          '/intro': (context) => const IntroductionPage(),
+          '/login': (context) => const LoginPage(),
+          '/signup': (context) => const SignUpPage(),
+        },
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFFD76528)),
+          pageTransitionsTheme: const PageTransitionsTheme(
+            builders: {
+              TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+            },
+          ),
+          fontFamily: 'Inter',
+          textTheme: TextTheme(),
+          useMaterial3: true,
         ),
-        fontFamily: 'Inter',
-        textTheme: TextTheme(),
-        useMaterial3: true,
+        home: const IntroductionPage(),
+        debugShowCheckedModeBanner: false,
       ),
-      home: const IntroductionPage(),
-      debugShowCheckedModeBanner: false,
     );
   }
 }
