@@ -1,5 +1,6 @@
 package com.example.dao
 
+import com.example.model.Users
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import kotlinx.coroutines.Dispatchers
@@ -14,8 +15,8 @@ object DatabaseFactory{
 
         Database.connect(createHikariDataSource(url = jdbcUrl,driver= driverClassName))
         transaction {
-            SchemaUtils.create(UserService.Users)
-            SchemaUtils.createMissingTablesAndColumns(UserService.Users)
+            SchemaUtils.create(Users)
+            SchemaUtils.createMissingTablesAndColumns(Users)
         }
     }
 
