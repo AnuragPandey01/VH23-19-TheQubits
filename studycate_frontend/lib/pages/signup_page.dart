@@ -1,5 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:studycate/classes/user.dart';
 import 'package:studycate/constants.dart';
+import 'package:studycate/functions.dart';
 import 'package:studycate/widgets/btn.dart';
 import 'package:studycate/widgets/tabbar.dart';
 import 'package:studycate/widgets/txtField.dart';
@@ -48,7 +52,8 @@ class _SignUpPageState extends State<SignUpPage> {
           bottom: PreferredSize(
             preferredSize: tabBar.preferredSize,
             child: Padding(
-              padding: const EdgeInsets.only(left: 30.0, right: 30.0, top: 8),
+              padding:
+                  const EdgeInsets.only(left: 30.0, right: 30.0, top: 15.0),
               child: Container(
                 decoration: const BoxDecoration(
                   color: darkerTextColor,
@@ -135,14 +140,30 @@ class _SignUpPageState extends State<SignUpPage> {
                       name: "Confirm Password",
                       hintText: "Enter your password again",
                       toggle: true,
-                      controller: password,
+                      controller: confirmPassword,
                     ),
                     const SizedBox(
                       height: 30,
                     ),
                     Btn(
                       text: "Sign Up",
-                      onTap: () {},
+                      onTap: () async {
+                        if (password.text == confirmPassword.text) {
+                          User user = User(
+                            firstName.text,
+                            lastName.text,
+                            email.text,
+                            "",
+                            instName.text,
+                            false,
+                            "",
+                            0,
+                            [],
+                            password.text,
+                          );
+                          var x = await signUp(user);
+                        }
+                      },
                     ),
                     const SizedBox(
                       height: 30,
@@ -201,7 +222,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             name: "Enter your year",
                             hintText: "Year",
                             toggle: false,
-                            controller: firstName,
+                            controller: year,
                           ),
                         ),
                         const SizedBox(width: 20),
@@ -211,7 +232,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             name: "and branch",
                             hintText: "Branch",
                             toggle: false,
-                            controller: lastName,
+                            controller: branch,
                           ),
                         ),
                       ],
@@ -241,14 +262,30 @@ class _SignUpPageState extends State<SignUpPage> {
                       name: "Confirm Password",
                       hintText: "Enter your password again",
                       toggle: true,
-                      controller: password,
+                      controller: confirmPassword,
                     ),
                     const SizedBox(
                       height: 30,
                     ),
                     Btn(
                       text: "Sign Up",
-                      onTap: () {},
+                      onTap: () async {
+                        if (password.text == confirmPassword.text) {
+                          User user = User(
+                            firstName.text,
+                            lastName.text,
+                            email.text,
+                            "",
+                            instName.text,
+                            true,
+                            branch.text,
+                            int.parse(year.text),
+                            [],
+                            password.text,
+                          );
+                          var x = await signUp(user);
+                        }
+                      },
                     ),
                     const SizedBox(
                       height: 30,

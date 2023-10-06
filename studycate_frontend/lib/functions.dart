@@ -8,8 +8,8 @@ Future<http.Response> login(String email, String password) async {
   var response = await http.post(loginUri,
       headers: {"Content-Type": "application/json"},
       body: jsonEncode({
-        "title": email,
-        "body": password,
+        "email": email,
+        "password": password,
       }));
   return response;
 }
@@ -18,7 +18,7 @@ Future<http.Response> signUp(User user) async {
   var response = await http.post(
     registerUri,
     headers: {"Content-Type": "application/json"},
-    body: user.toJson(),
+    body: jsonEncode(user.toJson()),
   );
   return response;
 }

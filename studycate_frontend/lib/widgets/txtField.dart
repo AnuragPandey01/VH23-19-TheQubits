@@ -6,11 +6,13 @@ class TxtField extends StatefulWidget {
   final String hintText;
   final bool toggle;
   final TextEditingController controller;
-  const TxtField(
+  bool? valid;
+  TxtField(
       {required this.name,
       required this.hintText,
       required this.toggle,
       required this.controller,
+      this.valid,
       super.key});
 
   @override
@@ -35,8 +37,14 @@ class _TxtFieldState extends State<TxtField> {
         ),
         const SizedBox(height: 5),
         widget.toggle
-            ? TextField(
+            ? TextFormField(
                 controller: widget.controller,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter some text';
+                  }
+                  return null;
+                },
                 style: const TextStyle(
                   color: Color(0xFFB7B7B7),
                   fontSize: 18,
@@ -85,13 +93,19 @@ class _TxtFieldState extends State<TxtField> {
 }
 
 Widget noToggle(hintText, controller) {
-  return TextField(
+  return TextFormField(
     controller: controller,
     style: const TextStyle(
       color: Color(0xFFB7B7B7),
       fontSize: 18,
       fontWeight: FontWeight.w400,
     ),
+    validator: (value) {
+      if (value == null || value.isEmpty) {
+        return 'Please enter some text';
+      }
+      return null;
+    },
     decoration: InputDecoration(
       contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
       border: const OutlineInputBorder(
