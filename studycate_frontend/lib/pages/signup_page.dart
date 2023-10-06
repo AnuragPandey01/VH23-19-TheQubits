@@ -21,6 +21,7 @@ class _SignUpPageState extends State<SignUpPage> {
   TextEditingController year = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
+  TextEditingController confirmPassword = TextEditingController();
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -47,7 +48,7 @@ class _SignUpPageState extends State<SignUpPage> {
           bottom: PreferredSize(
             preferredSize: tabBar.preferredSize,
             child: Padding(
-              padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 8),
+              padding: const EdgeInsets.only(left: 30.0, right: 30.0, top: 8),
               child: Container(
                 decoration: const BoxDecoration(
                   color: darkerTextColor,
@@ -59,171 +60,204 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
         ),
         backgroundColor: bgColor,
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: TabBarView(
-            children: [
-              Column(
-                children: [
-                  const SizedBox(height: 5),
-                  Row(
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: TxtField(
-                          name: "Enter your name",
-                          hintText: "First name",
-                          toggle: false,
-                          controller: firstName,
+        body: TabBarView(
+          children: [
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 30, vertical: 8.0),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const SizedBox(height: 20),
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: TxtField(
+                            name: "Enter your name",
+                            hintText: "First name",
+                            toggle: false,
+                            controller: firstName,
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 15),
-                      Expanded(
-                        flex: 1,
-                        child: TxtField(
-                          name: "",
-                          hintText: "Last name",
-                          toggle: false,
-                          controller: lastName,
+                        const SizedBox(width: 20),
+                        Expanded(
+                          flex: 1,
+                          child: TxtField(
+                            name: "",
+                            hintText: "Last name",
+                            toggle: false,
+                            controller: lastName,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  TxtField(
-                    name: "School Name",
-                    hintText: "Enter your School Name",
-                    toggle: false,
-                    controller: instName,
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  TxtField(
-                    name: "Grade",
-                    hintText: "Enter your Grade",
-                    toggle: false,
-                    controller: grade,
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  TxtField(
-                    name: "Email ID",
-                    hintText: "Enter your Email Address",
-                    toggle: false,
-                    controller: email,
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  TxtField(
-                    name: "Password",
-                    hintText: "Enter your password",
-                    toggle: true,
-                    controller: password,
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  Btn(
-                    text: "Sign Up",
-                    onTap: () {},
-                  ),
-                ],
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    TxtField(
+                      name: "School Name",
+                      hintText: "Enter your School Name",
+                      toggle: false,
+                      controller: instName,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    TxtField(
+                      name: "Grade",
+                      hintText: "Enter your Grade",
+                      toggle: false,
+                      controller: grade,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    TxtField(
+                      name: "Email ID",
+                      hintText: "Enter your Email Address",
+                      toggle: false,
+                      controller: email,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    TxtField(
+                      name: "Password",
+                      hintText: "Enter your password",
+                      toggle: true,
+                      controller: password,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    TxtField(
+                      name: "Confirm Password",
+                      hintText: "Enter your password again",
+                      toggle: true,
+                      controller: password,
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    Btn(
+                      text: "Sign Up",
+                      onTap: () {},
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                  ],
+                ),
               ),
-              Column(
-                children: [
-                  const SizedBox(height: 5),
-                  Row(
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: TxtField(
-                          name: "Enter your name",
-                          hintText: "First name",
-                          toggle: false,
-                          controller: firstName,
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 30, vertical: 8.0),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const SizedBox(height: 20),
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: TxtField(
+                            name: "Enter your name",
+                            hintText: "First name",
+                            toggle: false,
+                            controller: firstName,
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 15),
-                      Expanded(
-                        flex: 1,
-                        child: TxtField(
-                          name: "",
-                          hintText: "Last name",
-                          toggle: false,
-                          controller: lastName,
+                        const SizedBox(width: 20),
+                        Expanded(
+                          flex: 1,
+                          child: TxtField(
+                            name: "",
+                            hintText: "Last name",
+                            toggle: false,
+                            controller: lastName,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  TxtField(
-                    name: "College/ University Name",
-                    hintText: "Enter your College / University Name",
-                    toggle: false,
-                    controller: instName,
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: TxtField(
-                          name: "Enter your year",
-                          hintText: "Year",
-                          toggle: false,
-                          controller: firstName,
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    TxtField(
+                      name: "College/ University Name",
+                      hintText: "Enter your College/ University Name",
+                      toggle: false,
+                      controller: instName,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: TxtField(
+                            name: "Enter your year",
+                            hintText: "Year",
+                            toggle: false,
+                            controller: firstName,
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 15),
-                      Expanded(
-                        flex: 1,
-                        child: TxtField(
-                          name: "and branch",
-                          hintText: "Branch",
-                          toggle: false,
-                          controller: lastName,
+                        const SizedBox(width: 20),
+                        Expanded(
+                          flex: 1,
+                          child: TxtField(
+                            name: "and branch",
+                            hintText: "Branch",
+                            toggle: false,
+                            controller: lastName,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  TxtField(
-                    name: "Email ID",
-                    hintText: "Enter your Email Address",
-                    toggle: false,
-                    controller: instName,
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  TxtField(
-                    name: "Password",
-                    hintText: "Enter your password",
-                    toggle: true,
-                    controller: password,
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  Btn(
-                    text: "Sign Up",
-                    onTap: () {},
-                  ),
-                ],
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    TxtField(
+                      name: "Email ID",
+                      hintText: "Enter your Email Address",
+                      toggle: false,
+                      controller: email,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    TxtField(
+                      name: "Password",
+                      hintText: "Enter your password",
+                      toggle: true,
+                      controller: password,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    TxtField(
+                      name: "Confirm Password",
+                      hintText: "Enter your password again",
+                      toggle: true,
+                      controller: password,
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    Btn(
+                      text: "Sign Up",
+                      onTap: () {},
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                  ],
+                ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

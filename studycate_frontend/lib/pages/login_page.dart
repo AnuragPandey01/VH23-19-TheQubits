@@ -24,7 +24,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      extendBodyBehindAppBar: true,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         leading: IconButton(
@@ -33,11 +33,19 @@ class _LoginPageState extends State<LoginPage> {
           },
           icon: const Icon(Icons.chevron_left, color: textColor),
         ),
+        title: const Text(
+          "Log In",
+          style: TextStyle(
+            color: Color(0xFFB7B7B7),
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       backgroundColor: bgColor,
       body: Padding(
-        padding: EdgeInsets.only(
-          top: size.height * 0.09,
+        padding: const EdgeInsets.only(
+          top: 30.0,
           left: 30.0,
           right: 30.0,
           bottom: 30.0,
@@ -45,20 +53,6 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Padding(
-              padding: EdgeInsets.only(left: 20.0),
-              child: Text(
-                "Log In",
-                style: TextStyle(
-                  color: Color(0xFFB7B7B7),
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 50,
-            ),
             TxtField(
               name: "Email",
               hintText: "Enter your email address",

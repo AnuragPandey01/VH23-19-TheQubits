@@ -41,6 +41,13 @@ class _IntroductionPageState extends State<IntroductionPage> {
           Consumer(builder: ((context, ref, child) {
             return PageView(
               controller: _controller,
+              onPageChanged: (n) {
+                if (n > 1) {
+                  ref.read(btnName.notifier).update((state) => "Sign Up");
+                } else {
+                  ref.read(btnName.notifier).update((state) => "Continue");
+                }
+              },
               children: [
                 Container(
                   color: const Color(0xFF030C11),
