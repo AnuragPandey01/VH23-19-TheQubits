@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:studycate/constants.dart';
+import 'package:studycate/widgets/btn.dart';
 
 class IntroductionPage extends StatefulWidget {
   const IntroductionPage({super.key});
@@ -188,8 +189,8 @@ class _IntroductionPageState extends State<IntroductionPage> {
                           child: Consumer(
                             builder: (context, ref, child) {
                               final name = ref.watch(btnName);
-                              return FilledButton(
-                                onPressed: () {
+                              return Btn(
+                                onTap: () {
                                   if (name == "Continue") {
                                     _controller.nextPage(
                                         duration:
@@ -200,31 +201,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                                     //Navigator.pushReplacementNamed(context, '/');
                                   }
                                 },
-                                style: ButtonStyle(
-                                  backgroundColor:
-                                      const MaterialStatePropertyAll<Color>(
-                                          Colors.white),
-                                  shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      //side: BorderSide(color: Colors.red),
-                                    ),
-                                  ),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 10,
-                                    vertical: size.height * 0.02,
-                                  ),
-                                  child: Text(
-                                    name,
-                                    style: TextStyle(
-                                      fontSize: 22,
-                                      color: Colors.pink.shade800,
-                                    ),
-                                  ),
-                                ),
+                                text: "Continue",
                               );
                             },
                           ),
