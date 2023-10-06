@@ -1,7 +1,13 @@
+import 'dart:convert';
+import 'dart:developer';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:studycate/constants.dart';
+import 'package:studycate/functions.dart';
 import 'package:studycate/widgets/btn.dart';
 import 'package:studycate/widgets/txtField.dart';
+import 'package:http/http.dart' as http;
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -13,6 +19,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -70,7 +77,13 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(
               height: 40,
             ),
-            const Btn(text: "Log In"),
+            Btn(
+              text: "Log In",
+              onTap: () async {
+                var valid = await login(email.text, password.text);
+                inspect(valid);
+              },
+            ),
             const SizedBox(
               height: 20,
             ),
