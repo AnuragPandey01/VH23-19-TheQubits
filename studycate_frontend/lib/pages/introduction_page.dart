@@ -50,22 +50,21 @@ class _IntroductionPageState extends State<IntroductionPage> {
               },
               children: [
                 Container(
-                  color: const Color(0xFF030C11),
+                  color: bgColor,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(height: size.height * 0.03),
                       Image.asset(
                         "assets/images/chat.png",
-                        height: size.height * 0.3,
+                        height: size.height * 0.2,
                       ),
-                      SizedBox(height: size.height * 0.03),
+                      SizedBox(height: size.height * 0.05),
                       ConstrainedBox(
                         constraints: BoxConstraints(maxWidth: size.width - 50),
                         child: const Text(
                           "Welcome to StudyCate",
                           style: TextStyle(
-                            fontSize: 30,
+                            fontSize: 28,
                             fontWeight: FontWeight.w600,
                             color: textColor,
                           ),
@@ -74,11 +73,11 @@ class _IntroductionPageState extends State<IntroductionPage> {
                       ),
                       const SizedBox(height: 20),
                       ConstrainedBox(
-                        constraints: BoxConstraints(maxWidth: size.width - 50),
+                        constraints: BoxConstraints(maxWidth: size.width - 100),
                         child: const Text(
                           "Connect & collaborate with fellow students through group chat",
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 17,
                             color: textColor,
                           ),
                           textAlign: TextAlign.center,
@@ -89,22 +88,21 @@ class _IntroductionPageState extends State<IntroductionPage> {
                   ),
                 ),
                 Container(
-                  color: const Color(0xFF030C11),
+                  color: bgColor,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(height: size.height * 0.03),
                       Image.asset(
                         "assets/images/chatBot.png",
-                        height: size.height * 0.3,
+                        height: size.height * 0.2,
                       ),
-                      SizedBox(height: size.height * 0.03),
+                      SizedBox(height: size.height * 0.05),
                       ConstrainedBox(
-                        constraints: BoxConstraints(maxWidth: size.width - 50),
+                        constraints: BoxConstraints(maxWidth: size.width - 100),
                         child: const Text(
                           "Quick AI Assistance",
                           style: TextStyle(
-                            fontSize: 30,
+                            fontSize: 28,
                             fontWeight: FontWeight.w600,
                             color: textColor,
                           ),
@@ -113,11 +111,11 @@ class _IntroductionPageState extends State<IntroductionPage> {
                       ),
                       const SizedBox(height: 20),
                       ConstrainedBox(
-                        constraints: BoxConstraints(maxWidth: size.width - 50),
+                        constraints: BoxConstraints(maxWidth: size.width - 100),
                         child: const Text(
                           "Got questions or douts? Our AI Chatbot is here to help!",
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 17,
                             color: textColor,
                           ),
                           textAlign: TextAlign.center,
@@ -128,22 +126,21 @@ class _IntroductionPageState extends State<IntroductionPage> {
                   ),
                 ),
                 Container(
-                  color: const Color(0xFF030C11),
+                  color: bgColor,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(height: size.height * 0.03),
                       Image.asset(
                         "assets/images/book.png",
-                        height: size.height * 0.3,
+                        height: size.height * 0.2,
                       ),
-                      SizedBox(height: size.height * 0.03),
+                      SizedBox(height: size.height * 0.05),
                       ConstrainedBox(
                         constraints: BoxConstraints(maxWidth: size.width - 50),
                         child: const Text(
                           "Let's get started!",
                           style: TextStyle(
-                            fontSize: 30,
+                            fontSize: 28,
                             fontWeight: FontWeight.w600,
                             color: textColor,
                           ),
@@ -152,11 +149,11 @@ class _IntroductionPageState extends State<IntroductionPage> {
                       ),
                       const SizedBox(height: 20),
                       ConstrainedBox(
-                        constraints: BoxConstraints(maxWidth: size.width - 50),
+                        constraints: BoxConstraints(maxWidth: size.width - 100),
                         child: const Text(
                           "Explore exciting features to enhance your learning experience",
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 17,
                             color: textColor,
                           ),
                           textAlign: TextAlign.center,

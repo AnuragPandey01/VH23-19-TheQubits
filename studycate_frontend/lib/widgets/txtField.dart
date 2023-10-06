@@ -20,7 +20,7 @@ class TxtField extends StatefulWidget {
 }
 
 class _TxtFieldState extends State<TxtField> {
-  bool visible = false;
+  bool hidden = true;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -35,7 +35,7 @@ class _TxtFieldState extends State<TxtField> {
             fontWeight: FontWeight.w400,
           ),
         ),
-        const SizedBox(height: 5),
+        const SizedBox(height: 10),
         widget.toggle
             ? TextFormField(
                 controller: widget.controller,
@@ -50,7 +50,7 @@ class _TxtFieldState extends State<TxtField> {
                   fontSize: 18,
                   fontWeight: FontWeight.w400,
                 ),
-                obscureText: visible,
+                obscureText: hidden,
                 decoration: InputDecoration(
                   contentPadding: const EdgeInsets.all(14),
                   border: const OutlineInputBorder(
@@ -70,16 +70,16 @@ class _TxtFieldState extends State<TxtField> {
                     color: darkerTextColor,
                   ),
                   suffixIcon: Padding(
-                    padding: const EdgeInsets.all(4.0),
+                    padding: const EdgeInsets.all(6.0),
                     child: IconButton(
                       icon: Icon(
-                        visible ? Icons.visibility : Icons.visibility_off,
+                        hidden ? Icons.visibility_off : Icons.visibility,
                         color: textColor,
                         size: 20.0,
                       ),
                       onPressed: () {
                         setState(() {
-                          visible = !visible;
+                          hidden = !hidden;
                         });
                       },
                     ),
@@ -107,7 +107,7 @@ Widget noToggle(hintText, controller) {
       return null;
     },
     decoration: InputDecoration(
-      contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 18, vertical: 18),
       border: const OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(15)),
         borderSide: BorderSide(width: 5, color: textColor),

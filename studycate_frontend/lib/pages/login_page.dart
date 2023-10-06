@@ -27,18 +27,24 @@ class _LoginPageState extends State<LoginPage> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          icon: const Icon(Icons.chevron_left, color: textColor),
+        leading: Padding(
+          padding: const EdgeInsets.only(top: 20.0),
+          child: IconButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            icon: const Icon(Icons.chevron_left, color: textColor),
+          ),
         ),
-        title: const Text(
-          "Log In",
-          style: TextStyle(
-            color: Color(0xFFB7B7B7),
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
+        title: const Padding(
+          padding: EdgeInsets.only(top: 20.0),
+          child: Text(
+            "Log In",
+            style: TextStyle(
+              color: Color(0xFFB7B7B7),
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),

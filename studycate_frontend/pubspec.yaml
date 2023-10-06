@@ -16,6 +16,8 @@ dependencies:
   flutter_riverpod: ^2.4.3
   http: ^1.1.0
   smooth_page_indicator: ^1.1.0
+  ensure_visible_when_focused: ^1.1.1
+  supabase_flutter: ^1.10.21
 
 dev_dependencies:
   flutter_test:
@@ -30,6 +32,7 @@ flutter:
     - assets/images/book.png
     - assets/images/chat.png
     - assets/images/chatBot.png
+    - assets/images/threads.png
 
   fonts:
     - family: Inter

@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:ensure_visible_when_focused/ensure_visible_when_focused.dart';
 import 'package:flutter/material.dart';
 import 'package:studycate/classes/user.dart';
 import 'package:studycate/constants.dart';
@@ -26,6 +27,7 @@ class _SignUpPageState extends State<SignUpPage> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController confirmPassword = TextEditingController();
+  FocusNode fn = FocusNode();
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -33,33 +35,42 @@ class _SignUpPageState extends State<SignUpPage> {
       length: 2,
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          leading: IconButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            icon: const Icon(Icons.chevron_left, color: textColor),
-          ),
-          title: const Text(
-            "Create an account",
-            style: TextStyle(
-              color: Color(0xFFB7B7B7),
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(130.0),
+          child: AppBar(
+            backgroundColor: Colors.transparent,
+            leading: Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: IconButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                icon: const Icon(Icons.chevron_left, color: textColor),
+              ),
             ),
-          ),
-          bottom: PreferredSize(
-            preferredSize: tabBar.preferredSize,
-            child: Padding(
-              padding:
-                  const EdgeInsets.only(left: 30.0, right: 30.0, top: 15.0),
-              child: Container(
-                decoration: const BoxDecoration(
-                  color: darkerTextColor,
-                  borderRadius: BorderRadius.all(Radius.circular(15)),
+            title: const Padding(
+              padding: EdgeInsets.only(top: 20),
+              child: Text(
+                "Create an account",
+                style: TextStyle(
+                  color: Color(0xFFB7B7B7),
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
                 ),
-                child: tabBar,
+              ),
+            ),
+            bottom: PreferredSize(
+              preferredSize: tabBar.preferredSize,
+              child: Padding(
+                padding:
+                    const EdgeInsets.only(left: 30.0, right: 30.0, top: 15.0),
+                child: Container(
+                  decoration: const BoxDecoration(
+                    color: darkerTextColor,
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                  ),
+                  child: tabBar,
+                ),
               ),
             ),
           ),
@@ -165,7 +176,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       },
                     ),
                     const SizedBox(
-                      height: 30,
+                      height: 160,
                     ),
                   ],
                 ),

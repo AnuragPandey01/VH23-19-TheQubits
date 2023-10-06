@@ -2,12 +2,10 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
+import 'package:studycate/classes/group.dart';
 import 'package:studycate/classes/user.dart';
 import 'package:studycate/constants.dart';
-
-final user = StateProvider<User>((ref) => User());
 
 Future<void> login(String email, String password, BuildContext context) async {
   var response = await http.post(
@@ -19,18 +17,21 @@ Future<void> login(String email, String password, BuildContext context) async {
     }),
   );
   if (response.statusCode == 200) {
-    Navigator.of(context).popAndPushNamed('/home');
-    var responsee = await http.post(
+    loggedInUser = User.fromJson(jsonDecode(response.body));
+    var responsegrps = await http.post(
       groupsUri,
       headers: {"Content-Type": "application/json"},
       body: jsonEncode({
         "userId": "38b8fc0c-0a9f-46c6-8177-fc01d49ad332",
       }),
     );
-    inspect(responsee);
+    Iterable l = jsonDecode(responsegrps.body);
+    groups = (json.decode(responsegrps.body) as List)
+        .map((i) => Group.fromJson(i))
+        .toList();
+    Navigator.of(context).popAndPushNamed('/home');
     //38b8fc0c-0a9f-46c6-8177-fc01d49ad332
   } else {
-    inspect(response);
     errorDlg(context, "Error", jsonDecode(response.body)['error']);
   }
 }
