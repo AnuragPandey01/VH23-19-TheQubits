@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:studycate/pages/home_page.dart';
 import 'package:studycate/pages/introduction_page.dart';
 import 'package:studycate/pages/login_page.dart';
 import 'package:studycate/pages/signup_page.dart';
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
           '/intro': (context) => const IntroductionPage(),
           '/login': (context) => const LoginPage(),
           '/signup': (context) => const SignUpPage(),
+          '/home': (context) => const HomePage(),
         },
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFFD76528)),
