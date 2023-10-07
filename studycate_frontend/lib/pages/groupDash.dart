@@ -511,14 +511,16 @@ class _GroupDashPageState extends State<GroupDashPage> {
                       children: [
                         Padding(
                             padding: const EdgeInsets.only(
-                              left: 30.0,
-                              right: 30.0,
+                              left: 20.0,
+                              right: 20.0,
                               top: 70,
                               bottom: 40,
                             ),
                             child: SingleChildScrollView(
-                              child:
-                                  Image.asset('assets/images/group_chat.png'),
+                              child: Image.asset(
+                                'assets/images/group_chat.png',
+                                width: size.width - 10,
+                              ),
                             )),
                         Padding(
                           padding: const EdgeInsets.only(
