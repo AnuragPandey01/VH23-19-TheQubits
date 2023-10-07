@@ -7,6 +7,7 @@ import 'dart:typed_data';
 import 'package:chat_bubbles/message_bars/message_bar.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_scalable_ocr/flutter_scalable_ocr.dart';
 import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:studycate/classes/group.dart';
@@ -295,6 +296,17 @@ class _GroupDashPageState extends State<GroupDashPage> {
                             ),
                           ),
                         ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            left: 24,
+                            right: 24,
+                            top: 50,
+                          ),
+                          child: Btn(
+                            text: "Leave group",
+                            onTap: () {},
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -417,7 +429,7 @@ class _GroupDashPageState extends State<GroupDashPage> {
                       ),
                       color: darkerBgColor,
                     ),
-                    child: const Stack(
+                    child: Stack(
                       children: [
                         Padding(
                           padding: EdgeInsets.only(
@@ -426,7 +438,27 @@ class _GroupDashPageState extends State<GroupDashPage> {
                             top: 70,
                           ),
                           child: Column(
-                            children: [],
+                            children: [
+                              ScalableOCR(
+                                paintboxCustom: Paint()
+                                  ..style = PaintingStyle.stroke
+                                  ..strokeWidth = 4.0
+                                  ..color =
+                                      const Color.fromARGB(153, 102, 160, 241),
+                                boxLeftOff: 4,
+                                boxBottomOff: 2.7,
+                                boxRightOff: 4,
+                                boxTopOff: 2.7,
+                                boxHeight:
+                                    MediaQuery.of(context).size.height / 5,
+                                getRawData: (value) {
+                                  inspect(value);
+                                },
+                                getScannedText: (value) {
+                                  print(value);
+                                },
+                              ),
+                            ],
                           ),
                         ),
                         Padding(
