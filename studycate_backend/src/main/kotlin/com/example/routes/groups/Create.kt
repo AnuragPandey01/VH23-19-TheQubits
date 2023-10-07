@@ -3,7 +3,6 @@ package com.example.routes.groups
 import com.example.dao.groupService
 import com.example.util.badReqRes
 import com.example.util.okRes
-import com.example.util.serverErrRes
 import io.ktor.server.application.*
 import io.ktor.server.plugins.ContentTransformationException
 import io.ktor.server.request.*
@@ -19,8 +18,6 @@ fun Route.createGroupRoute() {
             call.badReqRes(e.message ?: "Invalid Arguments")
         } catch (e: ContentTransformationException) {
             call.badReqRes("Invalid Arguments")
-        } catch (e: Exception) {
-            call.serverErrRes("Something went wrong")
         }
     }
 }

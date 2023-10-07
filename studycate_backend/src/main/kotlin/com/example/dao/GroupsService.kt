@@ -18,11 +18,19 @@ class GroupsService {
         val createdGrp = ChatGroups.insert {
             it[groupName] = grp.name
             it[groupDescription] = grp.desc
-            it[groupIcon] = "https://api.dicebear.com/7.x/initials/png?seed=${grp.name}"
+            it[groupIcon] = "https://api.dicebear.com/7.x/initials/png?seed=${grp.name.replace(" ", "")}"
             it[creator] = UUID.fromString(grp.adminId)
             it[members] = membersCount
             it[verified] = false
         }.resultedValues?.singleOrNull()?.let { resultRowToGroupGlance(it) } ?: error("Group Creation Failed")
+
+        UserGroupsMapping.insert {
+            it[userId] = UUID.fromString(grp.adminId)
+            it[groupId] = UUID.fromString(createdGrp.id)
+            it[isAdmin] = true
+            it[isCreator] = true
+            it[isMember] = true
+        }
 
         for(member in grp.members){
             UserGroupsMapping.insert {
@@ -30,6 +38,8 @@ class GroupsService {
                 it[groupId] = UUID.fromString(createdGrp.id)
             }
         }
+
+        createdGrp
     }
 
     suspend fun getGroupDetails(groupId : String) = dbQuery {
@@ -53,6 +63,12 @@ class GroupsService {
             val admin = admin
         }
     }
+
+    /*suspend fun createGroupBucket(groupId : String) = dbQuery {
+        ChatGroups.update({ ChatGroups.id eq UUID.fromString(groupId) }) {
+            it[bucket] = groupId
+        }
+    }*/
 }
 
 val groupService = GroupsService()

@@ -16,7 +16,7 @@ data class GroupGlance(
 )
 
 fun resultRowToGroupGlance(it : ResultRow) = GroupGlance(
-    id = it[UserGroupsMapping.groupId].toString(),
+    id = it[ChatGroups.id].toString(),
     name = it[ChatGroups.groupName],
     description = it[ChatGroups.groupDescription],
     members = it[ChatGroups.members],

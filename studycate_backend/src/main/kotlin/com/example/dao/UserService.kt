@@ -39,12 +39,13 @@ class UserService {
     suspend fun getUserChatGroups(userId : String) = dbQuery {
 
         UserGroupsMapping.innerJoin(ChatGroups).slice(
-            UserGroupsMapping.groupId,
+            ChatGroups.id,
             ChatGroups.groupName,
             ChatGroups.groupDescription,
             ChatGroups.groupIcon,
             ChatGroups.verified,
-            ChatGroups.members
+            ChatGroups.members,
+            ChatGroups.createdAt,
         ).select {
             UserGroupsMapping.userId eq UUID.fromString(userId)
         }.mapNotNull { resultRowToGroupGlance(it) }
