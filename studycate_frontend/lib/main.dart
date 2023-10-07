@@ -4,6 +4,7 @@ import 'package:studycate/pages/createGroup_page.dart';
 import 'package:studycate/pages/home_page.dart';
 import 'package:studycate/pages/introduction_page.dart';
 import 'package:studycate/pages/login_page.dart';
+import 'package:studycate/pages/profile_page.dart';
 import 'package:studycate/pages/signup_page.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
           '/signup': (context) => const SignUpPage(),
           '/home': (context) => const HomePage(),
           '/createGroup': (context) => const createGroupPage(),
+          '/profile': (context) => const ProfilePage(),
         },
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFFD76528)),

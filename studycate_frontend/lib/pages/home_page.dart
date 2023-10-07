@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    Timer mytimer = Timer.periodic(const Duration(seconds: 10), (timer) async {
+    /*Timer mytimer = Timer.periodic(const Duration(seconds: 10), (timer) async {
       var responsegrps = await http.post(
         groupsUri,
         headers: {"Content-Type": "application/json"},
@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
           groups = neww;
         });
       }
-    });
+    });*/
   }
 
   @override
@@ -86,7 +86,7 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.only(right: 20.0),
               child: IconButton(
                 onPressed: () {
-                  Navigator.of(context).popAndPushNamed('/login');
+                  Navigator.of(context).popAndPushNamed('/profile');
                 },
                 icon: ClipRRect(
                   borderRadius: const BorderRadius.all(Radius.circular(35)),

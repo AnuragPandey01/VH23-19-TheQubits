@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:chat_bubbles/message_bars/message_bar.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:open_file/open_file.dart';
@@ -414,15 +415,32 @@ class _GroupDashPageState extends State<GroupDashPage> {
                       ),
                       color: darkerBgColor,
                     ),
-                    child: const Column(
+                    child: const Stack(
                       children: [
-                        Text(
-                          'Q & A',
-                          style: TextStyle(
-                            color: textColor,
-                            fontSize: 16,
-                            fontWeight: FontWeight.normal,
-                            overflow: TextOverflow.ellipsis,
+                        Padding(
+                          padding: EdgeInsets.only(
+                            left: 30.0,
+                            right: 30.0,
+                            top: 70,
+                          ),
+                          child: Column(
+                            children: [],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            left: 30.0,
+                            right: 30.0,
+                            top: 15,
+                          ),
+                          child: Text(
+                            'Q & A',
+                            style: TextStyle(
+                              color: textColor,
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              overflow: TextOverflow.ellipsis,
+                            ),
                           ),
                         ),
                       ],
@@ -489,15 +507,53 @@ class _GroupDashPageState extends State<GroupDashPage> {
                       ),
                       color: darkerBgColor,
                     ),
-                    child: const Column(
+                    child: Stack(
                       children: [
-                        Text(
-                          'Chat',
-                          style: TextStyle(
-                            color: textColor,
-                            fontSize: 16,
-                            fontWeight: FontWeight.normal,
-                            overflow: TextOverflow.ellipsis,
+                        Padding(
+                            padding: const EdgeInsets.only(
+                              left: 30.0,
+                              right: 30.0,
+                              top: 70,
+                              bottom: 40,
+                            ),
+                            child: SingleChildScrollView(
+                              child:
+                                  Image.asset('assets/images/group_chat.png'),
+                            )),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            left: 30.0,
+                            right: 30.0,
+                            top: 15,
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Align(
+                                alignment: Alignment.topLeft,
+                                child: Text(
+                                  'Chat',
+                                  style: TextStyle(
+                                    color: textColor,
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.bold,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                color: darkerBgColor,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 20, bottom: 20),
+                                  child: MessageBar(
+                                    sendButtonColor: themeColor,
+                                    messageBarColor: darkerBgColor,
+                                    onSend: (_) => print(_),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],

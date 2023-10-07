@@ -30,7 +30,7 @@ class _ProfilePageState extends State<ProfilePage> {
         title: const Padding(
           padding: EdgeInsets.only(top: 20.0),
           child: Text(
-            "Log In",
+            "Profile",
             style: TextStyle(
               color: Color(0xFFB7B7B7),
               fontSize: 24,
@@ -79,37 +79,13 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             Btn(
               text: "Logout",
-              onTap: () async {},
+              onTap: () async {
+                Navigator.of(context).pushReplacementNamed('/login');
+              },
             ),
             const SizedBox(
               height: 20,
             ),
-            Center(
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Text(
-                    "Don't have an account?",
-                    style: TextStyle(color: textColor),
-                  ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).pushNamed('/signup');
-                    },
-                    child: const Text(
-                      "Sign Up!",
-                      style: TextStyle(
-                        color: themeColor,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            )
           ],
         ),
       ),
