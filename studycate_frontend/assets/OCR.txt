@@ -1,0 +1,48 @@
+
+
+ Carbohydrates
+
+Carbohydrates, also known as saccharides, are fundamental biomolecules composed of carbon, hydrogen, and oxygen atoms. They are the primary source of energy for living organisms, fueling various cellular processes through metabolic pathways like glycolysis and cellular respiration. Carbohydrates encompass a vast array of structures, including monosaccharides (single sugars), disaccharides (two linked monosaccharides), and polysaccharides (long chains of monosaccharides). Monosaccharides, such as glucose and fructose, are rapidly absorbed and utilized by cells to meet immediate energy needs. Disaccharides like sucrose (glucose + fructose) and lactose (glucose + galactose) undergo digestion in the digestive system, breaking down into monosaccharides for energy utilization. Polysaccharides like starch (plants) and glycogen (animals) serve as storage forms, allowing for a controlled and efficient release of energy when required. Additionally, carbohydrates contribute to the structural integrity of cells; for example, cellulose in plant cell walls maintains cell shape and supports structural integrity.
+
+ Proteins
+
+Proteins, vital macromolecules, consist of amino acids linked together by peptide bonds, forming intricate three-dimensional structures. Their roles in biological systems are incredibly diverse and essential for life. Enzymes, a significant group of proteins, act as catalysts, accelerating chemical reactions by lowering the activation energy necessary for the reaction to occur. Structural proteins like collagen provide strength and support to connective tissues, contributing to the physical framework of cells, tissues, and organs. Hemoglobin, a protein present in red blood cells, facilitates oxygen transport throughout the body. Antibodies, an integral part of the immune system, defend against pathogens and foreign substances, enhancing the body's defense mechanisms. Proteins also function as hormones, such as insulin, regulating metabolic processes and signaling within the body.
+
+ Lipids
+
+Lipids constitute a diverse group of biomolecules characterized by their hydrophobic nature. Fats and oils, composed of fatty acids and glycerol, serve as a concentrated and efficient form of long-term energy storage, meeting energy requirements during extended periods. Phospholipids, a crucial component of cell membranes, form a lipid bilayer, providing structural support and controlling the movement of substances in and out of cells. Steroids, including cholesterol, play vital roles in various physiological functions, such as hormone synthesis and maintaining cell membrane stability. Additionally, lipids function in insulation, protecting vital organs, and aiding the absorption of fat-soluble vitamins (A, D, E, K).
+
+ Nucleic Acids
+
+Nucleic acids, including DNA (deoxyribonucleic acid) and RNA (ribonucleic acid), are pivotal biomolecules responsible for storing, transmitting, and expressing genetic information, fundamental for an organism's traits and characteristics. DNA, a double-stranded helical molecule, serves as the genetic blueprint for all cellular activities and is inherited from one generation to the next. RNA, usually single-stranded, acts as an intermediary, transcribing genetic information from DNA and translating it into functional proteins through the process of protein synthesis. These biomolecules are crucial in cell division, growth, development, and the overall functioning of organisms.
+
+ Understanding Biomolecules
+
+Understanding the intricacies of these biomolecule categories is paramount in comprehending the complex biological processes and mechanisms that underlie life, forming the foundational knowledge in biology education.
+
+ Characteristics and Reactions in Living Systems
+
+"A living system grows, sustains and reproduces itself. The most amazing thing about a living system is that it is the harmonious and synchronous progress of chemical biomolecules like carbohydrates, proteins and nucleic acids and hormones; reactions in the body which leads to life."
+
+ Classification and Structure
+
+- Explain the characteristics of carbohydrates, proteins, nucleic acids, and vitamins based on their structures.
+- Classify carbohydrates, proteins, nucleic acids, and vitamins based on their structures.
+- Explain the difference between DNA and RNA.
+- Describe the role of biomolecules in biosystems.
+
+ Introduction to Carbohydrates
+
+Carbohydrates are primarily produced by plants and form a very large group of naturally occurring organic compounds. Some common examples of carbohydrates are cane sugar, glucose, starch, etc. Most of them have a general formula, Cₙ(H₂O)ₙ, and were considered as hydrates of carbon from where the name carbohydrate was derived. For example, the molecular formula of glucose (C₆H₁₂O₆) fits into this general formula, Cₙ(H₂O)ₙ. But all the compounds which fit into this formula may not be classified as carbohydrates. For example, acetic acid (CH₃COOH) fits into this general formula, Cₙ(H₂O)ₙ, but is not a carbohydrate. Similarly, hamnose, C₆H₁₂O₆ is a carbohydrate but does not fit in this definition. A large number of their reactions have shown that they contain specific functional groups. Chemically, the carbohydrates may be defined as optically active polyhydroxy aldehydes or ketones or the compounds that produce such units on hydrolysis. Some of the carbohydrates, which are sweet in taste, are also called sugars. The most common sugar used in our homes is named as sucrose, whereas the sugar present in milk is known as lactose. Carbohydrates are also called saccharides (Greek: sakcharon means sugar).
+
+ Classification of Carbohydrates
+
+Carbohydrates are classified based on their behavior on hydrolysis into the following three groups:
+1. **Monosaccharides**: A carbohydrate that cannot be hydrolyzed further to give simpler units of polyhydroxy aldehyde or ketone is called a monosaccharide. About 20 monosaccharides are known to occur in nature. Some common examples are glucose, fructose, ribose, etc.
+2. **Oligosaccharides**: Carbohydrates that yield two to ten monosaccharide units, on hydrolysis, are called oligosaccharides. They are further classified as disaccharides, trisaccharides, tetrasaccharides, etc., depending upon the number of monosaccharides they provide on hydrolysis.
+3. **Polysaccharides**: Carbohydrates that yield a large number of monosaccharide units on hydrolysis are called polysaccharides. Some common examples are starch, cellulose, glycogen, gums, etc. Polysaccharides are not sweet in taste; hence, they are also called non-sugars.
+
+Carbohydrates can also be classified as either reducing or non-reducing sugars. All those carbohydrates which reduce Fehling’s solution and Tollens’ reagent are referred to as reducing sugars. All monosaccharides, whether aldose or ketose, are reducing sugars. Monosaccharides are further classified based on the number of carbon atoms and the functional group present in them. If a monosaccharide contains an aldehyde group, it is known as an aldose, and if it contains a keto group, it is known as a ketose. The number of carbon atoms constituting the monosaccharide
+
+
+
