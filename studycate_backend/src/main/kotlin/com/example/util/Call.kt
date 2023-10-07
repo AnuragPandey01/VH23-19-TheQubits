@@ -8,7 +8,7 @@ suspend fun ApplicationCall.serverErrRes(msg: String) =
     this.respond(status = HttpStatusCode.InternalServerError, mapOf("error" to msg))
 
 suspend fun ApplicationCall.badReqRes(msg: String) =
-    this.respond(status = HttpStatusCode.BadRequest, mapOf("error" to msg))
+    this.respond(status = HttpStatusCode.BadRequest, mapOf("msg" to msg))
 
 suspend fun ApplicationCall.okRes(msg: String) =
     this.respond(status = HttpStatusCode.OK, mapOf("msg" to msg))

@@ -27,18 +27,26 @@ data class User(
     val grade: Int?,
     val branch : String?,
     val year : Int?,
-    val groups: List<String>
 )
 
 object Users : UUIDTable() {
-    val firstName = varchar("first_name", length = 50)
-    val lastName = varchar("last_name", length = 50 )
-    val email = varchar("email", length = 50).uniqueIndex()
+    val firstName = text("first_name")
+    val lastName = text("last_name")
+    val email = text("email").uniqueIndex()
     val institutionName = varchar("institutionName", length = 50)
     val isClgStud = bool("isClgStud")
     val grade = integer("grade").nullable()
-    val branch = varchar("branch", length = 50).nullable()
+    val branch = text("branch").nullable()
     val year = integer("year").nullable()
-    val password = varchar("password", length = 50)
-    val profileUrl = varchar("profileUrl", length = 50).default("https://api.dicebear.com/7.x/fun-emoji/png")
+    val password = text("password")
+    val profileUrl = text("profileUrl").default("https://api.dicebear.com/7.x/fun-emoji/png")
+    val sessionJoined = reference("session", Sessions.id).nullable()
+}
+
+object UserGroupsMapping : UUIDTable() {
+    val userId = reference("userId", Users.id)
+    val groupId = reference("groupId", ChatGroups.id)
+    val isAdmin = bool("isAdmin").default(false)
+    val isCreator = bool("isCreator").default(false)
+    val isMember = bool("isMember").default(false)
 }

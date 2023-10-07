@@ -1,9 +1,7 @@
 package com.example.dao
 
 import com.example.dao.DatabaseFactory.dbQuery
-import com.example.model.SignupUser
-import com.example.model.User
-import com.example.model.Users
+import com.example.model.*
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import java.util.*
@@ -21,6 +19,7 @@ class UserService {
             it[branch] = user.branch
             it[year] = user.year
             it[password] = user.password
+            it[profileUrl] = "https://api.dicebear.com/7.x/initials/png?seed=${user.firstName} ${user.lastName}"
         }.resultedValues?.singleOrNull()?.let { resultRowToUser(it) } ?: error("User Already Exists")
     }
 
@@ -30,27 +29,42 @@ class UserService {
             .singleOrNull() ?: error("User doesn't exist or password is incorrect")
     }
 
-    //TODO
-    /*suspend fun read(id: Int): ExposedUser? {
-        return dbQuery {
-            Users.select { Users.id eq id }
-                .map { ExposedUser(it[Users.name], it[Users.age]) }
-                .singleOrNull()
-        }
-    }*/
-
-    /*suspend fun update(id: Int, user: ExposedUser) {
-        dbQuery {
-            Users.update({ Users.id eq id }) {
-                it[name] = user.name
-                it[age] = user.age
-            }
-        }
-    }*/
 
     suspend fun delete(id: Int) = dbQuery {
         Users.deleteWhere {
             Users.id eq UUID.fromString(id.toString())
+        }
+    }
+
+    suspend fun getUserChatGroups(userId : String) = dbQuery {
+
+        UserGroupsMapping.innerJoin(ChatGroups).slice(
+            ChatGroups.id,
+            ChatGroups.groupName,
+            ChatGroups.groupDescription,
+            ChatGroups.groupIcon,
+            ChatGroups.verified,
+            ChatGroups.members,
+            ChatGroups.createdAt,
+        ).select {
+            UserGroupsMapping.userId eq UUID.fromString(userId)
+        }.mapNotNull { resultRowToGroupGlance(it) }
+
+    }
+
+    suspend fun exitGroup(userId : String, groupId : String) = dbQuery {
+        UserGroupsMapping.deleteWhere {
+            UserGroupsMapping.userId eq UUID.fromString(userId) and (UserGroupsMapping.groupId eq UUID.fromString(groupId))
+        }
+    }
+
+    suspend fun joinGroup(userId : String, groupId : String) = dbQuery {
+        UserGroupsMapping.insert {
+            it[UserGroupsMapping.userId] = UUID.fromString(userId)
+            it[UserGroupsMapping.groupId] = UUID.fromString(groupId)
+            it[UserGroupsMapping.isAdmin] = false
+            it[UserGroupsMapping.isCreator] = false
+            it[UserGroupsMapping.isMember] = true
         }
     }
 
@@ -64,7 +78,6 @@ class UserService {
         grade = it[Users.grade],
         branch = it[Users.branch],
         year = it[Users.year],
-        groups = listOf("1", "2"),
         profileImg = it[Users.profileUrl]
     )
 }

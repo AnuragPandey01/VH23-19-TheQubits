@@ -1,5 +1,7 @@
 package com.example.dao
 
+import com.example.model.ChatGroups
+import com.example.model.UserGroupsMapping
 import com.example.model.Users
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
@@ -16,7 +18,11 @@ object DatabaseFactory{
         Database.connect(createHikariDataSource(url = jdbcUrl,driver= driverClassName))
         transaction {
             SchemaUtils.create(Users)
+            SchemaUtils.create(ChatGroups)
+            SchemaUtils.create(UserGroupsMapping)
             SchemaUtils.createMissingTablesAndColumns(Users)
+            SchemaUtils.createMissingTablesAndColumns(ChatGroups)
+            SchemaUtils.createMissingTablesAndColumns(UserGroupsMapping)
         }
     }
 
