@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 
@@ -19,6 +20,29 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    Timer mytimer = Timer.periodic(const Duration(seconds: 10), (timer) async {
+      var responsegrps = await http.post(
+        groupsUri,
+        headers: {"Content-Type": "application/json"},
+        body: jsonEncode({
+          "userId": loggedInUser.id,
+        }),
+      );
+      Iterable l = jsonDecode(responsegrps.body);
+      var neww = (json.decode(responsegrps.body) as List)
+          .map((i) => Group.fromJson(i))
+          .toList();
+      if (groups != neww) {
+        setState(() {
+          groups = neww;
+        });
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
