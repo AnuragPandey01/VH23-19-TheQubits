@@ -84,21 +84,6 @@ class _LoginPageState extends State<LoginPage> {
               Btn(
                 text: "Log In",
                 onTap: () async {
-                  /*Navigator.of(context).popAndPushNamed('/home');
-                  final supabase = Supabase.instance.client;
-                  FilePickerResult? result =
-                      await FilePicker.platform.pickFiles();
-
-                  if (result != null) {
-                    File file = File(result.files.single.path!);
-                    final String path =
-                        await supabase.storage.from('qubits').upload(
-                              'public/qubits.png',
-                              file,
-                              fileOptions: const FileOptions(
-                                  cacheControl: '3600', upsert: false),
-                            );
-                  }*/
                   await login(email.text, password.text, context);
                 },
               ),

@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:studycate/classes/group.dart';
 import 'package:studycate/classes/groupDetailed.dart';
 import 'package:http/http.dart' as http;
 import 'package:studycate/classes/user.dart';
@@ -45,11 +46,16 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           actions: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.search,
-                color: textColor,
+            Tooltip(
+              message: "Create a study group",
+              child: IconButton(
+                onPressed: () async {
+                  Navigator.of(context).pushNamed('/createGroup');
+                },
+                icon: const Icon(
+                  Icons.add,
+                  color: textColor,
+                ),
               ),
             ),
             Padding(
@@ -68,26 +74,58 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
-        floatingActionButton: GestureDetector(
-          onTap: () {
-            Navigator.of(context).pushNamed('/createGroup');
-          },
-          child: Container(
-            height: 60.0,
-            width: 60.0,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(15)),
-              gradient: LinearGradient(
-                colors: [themeColor, darkerThemeColor],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
+        floatingActionButton: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            GestureDetector(
+              onTap: () async {
+                var msg =
+                    await displayTextInputDialog("Join a study group", context);
+                var obj = jsonEncode({
+                  "userId": loggedInUser.id,
+                  "invitationCode": msg,
+                });
+                var response = await http.post(
+                  joinGroupUri,
+                  headers: {"Content-Type": "application/json"},
+                  body: obj,
+                );
+                if (response.statusCode == 200) {
+                  var responsegrps = await http.post(
+                    groupsUri,
+                    headers: {"Content-Type": "application/json"},
+                    body: jsonEncode({
+                      "userId": loggedInUser.id,
+                    }),
+                  );
+                  Iterable l = jsonDecode(responsegrps.body);
+                  groups = (json.decode(responsegrps.body) as List)
+                      .map((i) => Group.fromJson(i))
+                      .toList();
+                  setState(() {});
+                } else {
+                  errorDlg(
+                      context, "Error", jsonDecode(response.body)['error']);
+                }
+              },
+              child: Container(
+                height: 60.0,
+                width: 60.0,
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                  gradient: LinearGradient(
+                    colors: [themeColor, darkerThemeColor],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                  ),
+                ),
+                child: const Padding(
+                  padding: const EdgeInsets.all(0.0),
+                  child: Center(child: Icon(Icons.people)),
+                ),
               ),
             ),
-            child: const Padding(
-              padding: const EdgeInsets.all(0.0),
-              child: Center(child: Icon(Icons.add)),
-            ),
-          ),
+          ],
         ),
         backgroundColor: Colors.transparent,
         body: Padding(
@@ -104,13 +142,11 @@ class _HomePageState extends State<HomePage> {
                     }),
                   );
                   if (response.statusCode == 200) {
-                    inspect(response);
                     groupd = GroupDetailed.fromJson(jsonDecode(response.body));
                     GroupDashPage grp = GroupDashPage(group: groupd);
                     Navigator.of(context)
                         .push(MaterialPageRoute(builder: (context) => grp));
                   } else {
-                    inspect(response);
                     errorDlg(
                         context, "Error", jsonDecode(response.body)['error']);
                   }

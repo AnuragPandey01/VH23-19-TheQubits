@@ -1,4 +1,7 @@
+import 'dart:convert';
 import 'dart:ffi';
+
+import 'package:studycate/classes/user.dart';
 
 class GroupDetailed {
   final String? id;
@@ -9,7 +12,7 @@ class GroupDetailed {
   final bool? verified;
   final Object? createdAt;
   final List<String>? members;
-  final List<String>? admin;
+  final String? creatorName;
 
   GroupDetailed({
     this.id,
@@ -20,7 +23,7 @@ class GroupDetailed {
     this.verified,
     this.createdAt,
     this.members,
-    this.admin,
+    this.creatorName,
   });
 
   GroupDetailed.fromJson(Map<String, dynamic> json)
@@ -32,7 +35,7 @@ class GroupDetailed {
         verified = json['detail']['verified'],
         createdAt = json['detail']['createdAt'],
         members = List<String>.from(json['members']),
-        admin = List<String>.from(json['admin']);
+        creatorName = json['creatorName'];
 
   Map<String, dynamic> toJson() => {
         'detail': {
@@ -45,6 +48,6 @@ class GroupDetailed {
           'createdAt': createdAt,
         },
         'members': members,
-        'admin': admin,
+        'creatorName': creatorName,
       };
 }

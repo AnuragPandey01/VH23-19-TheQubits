@@ -3,7 +3,8 @@ import 'dart:ui';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:studycate/classes/group.dart';
 import 'package:studycate/classes/groupDetailed.dart';
-import 'package:studycate/classes/user.dart';
+import 'package:studycate/classes/user.dart' as User;
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 const Color textColor = Color(0xFFB7B7B7);
 const Color lightertextColor = Color(0xFFd4d4d4);
@@ -25,7 +26,14 @@ final groupsUri = Uri.parse("http://139.59.78.179:8080/user/chatGroups");
 final joinGroupUri = Uri.parse("http://139.59.78.179:8080/user/joinGroup");
 final createGroupUri = Uri.parse("http://139.59.78.179:8080/group/create");
 final groupDtlsUri = Uri.parse("http://139.59.78.179:8080/group/info");
+final createSessionUri =
+    Uri.parse("http://139.59.78.179:8080/session/createSession");
+final joinSessionUri =
+    Uri.parse("http://139.59.78.179:8080/session/joinSession");
+final leaveSessionUri =
+    Uri.parse("http://139.59.78.179:8080/session/leaveSession");
 
-User loggedInUser = User();
+User.User loggedInUser = User.User();
 List<Group> groups = [];
 GroupDetailed groupd = GroupDetailed();
+List<FileObject> library = [];

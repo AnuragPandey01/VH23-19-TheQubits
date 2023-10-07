@@ -19,6 +19,8 @@ dependencies:
   ensure_visible_when_focused: ^1.1.1
   supabase_flutter: ^1.10.21
   file_picker: ^5.5.0
+  open_file: ^3.3.2
+  path_provider: ^2.1.1
 
 dev_dependencies:
   flutter_test:

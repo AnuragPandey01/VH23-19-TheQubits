@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:studycate/classes/group.dart';
 import 'package:studycate/classes/user.dart' as User;
 import 'package:studycate/constants.dart';
+import 'package:studycate/widgets/txtField.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> login(String email, String password, BuildContext context) async {
@@ -83,6 +84,13 @@ void updates() {
   ).subscribe();
 }
 
+Future<void> refreshLib() async {
+  final supabase = Supabase.instance.client;
+  final List<FileObject> objects = await supabase.storage.from('qubits').list();
+  inspect(objects);
+  library = objects;
+}
+
 errorDlg(BuildContext context, String title, String content) {
   // set up the button
   Widget okButton = TextButton(
@@ -108,4 +116,43 @@ errorDlg(BuildContext context, String title, String content) {
       return alert;
     },
   );
+}
+
+TextEditingController _textFieldController = TextEditingController();
+
+Future<String> displayTextInputDialog(
+    String title, BuildContext context) async {
+  String input = "";
+
+  await showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: Text(title),
+        content: TxtField(
+          controller: _textFieldController,
+          name: "",
+          hintText: "Invite Code",
+          toggle: false,
+        ),
+        actions: <Widget>[
+          TextButton(
+            child: Text('Cancel'),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          TextButton(
+            child: Text('Join'),
+            onPressed: () {
+              input = _textFieldController.text;
+              Navigator.pop(context);
+            },
+          ),
+        ],
+      );
+    },
+  );
+  _textFieldController.text = ""; //
+  return input;
 }
