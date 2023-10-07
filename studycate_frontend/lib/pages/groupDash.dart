@@ -398,6 +398,8 @@ class _GroupDashPageState extends State<GroupDashPage> {
                                                 cacheControl: '3600',
                                                 upsert: false),
                                           );
+                                      await refreshLib();
+                                      setState(() {});
                                     }
                                   })
                             ],
