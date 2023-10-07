@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:studycate/classes/group.dart';
+import 'package:studycate/classes/groupDetailed.dart';
 import 'package:studycate/classes/user.dart';
 
 const Color textColor = Color(0xFFB7B7B7);
@@ -23,6 +24,8 @@ final registerUri = Uri.parse("http://139.59.78.179:8080/user/register");
 final groupsUri = Uri.parse("http://139.59.78.179:8080/user/chatGroups");
 final joinGroupUri = Uri.parse("http://139.59.78.179:8080/user/joinGroup");
 final createGroupUri = Uri.parse("http://139.59.78.179:8080/group/create");
+final groupDtlsUri = Uri.parse("http://139.59.78.179:8080/group/info");
 
 User loggedInUser = User();
 List<Group> groups = [];
+GroupDetailed groupd = GroupDetailed();

@@ -1,7 +1,13 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:studycate/classes/groupDetailed.dart';
+import 'package:http/http.dart' as http;
 import 'package:studycate/classes/user.dart';
 import 'package:studycate/constants.dart';
+import 'package:studycate/functions.dart';
 import 'package:studycate/pages/groupDash.dart';
 
 class HomePage extends StatefulWidget {
@@ -89,10 +95,25 @@ class _HomePageState extends State<HomePage> {
           child: ListView.separated(
             itemBuilder: (context, index) {
               return ListTile(
-                onTap: () {
-                  GroupDashPage grp = GroupDashPage(group: groups[index]);
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) => grp));
+                onTap: () async {
+                  var response = await http.post(
+                    groupDtlsUri,
+                    headers: {"Content-Type": "application/json"},
+                    body: jsonEncode({
+                      "groupId": groups[index].id,
+                    }),
+                  );
+                  if (response.statusCode == 200) {
+                    inspect(response);
+                    groupd = GroupDetailed.fromJson(jsonDecode(response.body));
+                    GroupDashPage grp = GroupDashPage(group: groupd);
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) => grp));
+                  } else {
+                    inspect(response);
+                    errorDlg(
+                        context, "Error", jsonDecode(response.body)['error']);
+                  }
                 },
                 contentPadding: const EdgeInsets.symmetric(horizontal: 24),
                 shape: RoundedRectangleBorder(
