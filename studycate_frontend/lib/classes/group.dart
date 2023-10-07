@@ -5,6 +5,7 @@ class Group {
   final String? grpIcon;
   final int? members;
   final bool? verified;
+  final Object? createdAt;
 
   Group({
     this.id,
@@ -13,15 +14,17 @@ class Group {
     this.grpIcon,
     this.members,
     this.verified,
+    this.createdAt,
   });
 
   Group.fromJson(Map<String, dynamic> json)
       : id = json['id'],
         name = json['name'],
-        description = json['email'],
+        description = json['description'],
         grpIcon = json['grpIcon'],
         members = json['members'],
-        verified = json['verified'];
+        verified = json['verified'],
+        createdAt = json['createdAt'];
 
   Map<String, dynamic> toJson() => {
         'id': id,
@@ -30,5 +33,6 @@ class Group {
         'grpIcon': grpIcon,
         'members': members,
         'verified': verified,
+        'createdAt': createdAt,
       };
 }

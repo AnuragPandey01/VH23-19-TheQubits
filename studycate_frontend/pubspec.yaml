@@ -18,6 +18,7 @@ dependencies:
   smooth_page_indicator: ^1.1.0
   ensure_visible_when_focused: ^1.1.1
   supabase_flutter: ^1.10.21
+  file_picker: ^5.5.0
 
 dev_dependencies:
   flutter_test:
@@ -34,6 +35,10 @@ flutter:
     - assets/images/chatBot.png
     - assets/images/threads.png
     - assets/images/mdi_user.png
+    - assets/images/chatIcon.png
+    - assets/images/bookIcon.png
+    - assets/images/qnaIcon.png
+    - assets/images/groupIcon.png
 
   fonts:
     - family: Inter

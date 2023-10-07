@@ -2,12 +2,15 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:studycate/constants.dart';
 import 'package:studycate/functions.dart';
 import 'package:studycate/widgets/btn.dart';
 import 'package:studycate/widgets/txtField.dart';
 import 'package:http/http.dart' as http;
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -56,63 +59,80 @@ class _LoginPageState extends State<LoginPage> {
           right: 30.0,
           bottom: 30.0,
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TxtField(
-              name: "Email",
-              hintText: "Enter your email address",
-              toggle: false,
-              controller: email,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            TxtField(
-              name: "Password",
-              hintText: "Enter your password",
-              toggle: true,
-              controller: password,
-            ),
-            const SizedBox(
-              height: 40,
-            ),
-            Btn(
-              text: "Log In",
-              onTap: () async {
-                await login(email.text, password.text, context);
-              },
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Center(
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Text(
-                    "Don't have an account?",
-                    style: TextStyle(color: textColor),
-                  ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).pushNamed('/signup');
-                    },
-                    child: const Text(
-                      "Sign Up!",
-                      style: TextStyle(
-                        color: themeColor,
-                        fontWeight: FontWeight.bold,
+        child: Consumer(
+          builder: (context, ref, child) => Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TxtField(
+                name: "Email",
+                hintText: "Enter your email address",
+                toggle: false,
+                controller: email,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              TxtField(
+                name: "Password",
+                hintText: "Enter your password",
+                toggle: true,
+                controller: password,
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+              Btn(
+                text: "Log In",
+                onTap: () async {
+                  /*Navigator.of(context).popAndPushNamed('/home');
+                  final supabase = Supabase.instance.client;
+                  FilePickerResult? result =
+                      await FilePicker.platform.pickFiles();
+
+                  if (result != null) {
+                    File file = File(result.files.single.path!);
+                    final String path =
+                        await supabase.storage.from('qubits').upload(
+                              'public/qubits.png',
+                              file,
+                              fileOptions: const FileOptions(
+                                  cacheControl: '3600', upsert: false),
+                            );
+                  }*/
+                  await login(email.text, password.text, context);
+                },
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Center(
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Text(
+                      "Don't have an account?",
+                      style: TextStyle(color: textColor),
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/signup');
+                      },
+                      child: const Text(
+                        "Sign Up!",
+                        style: TextStyle(
+                          color: themeColor,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            )
-          ],
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

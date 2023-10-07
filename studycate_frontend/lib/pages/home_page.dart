@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:studycate/classes/user.dart';
 import 'package:studycate/constants.dart';
+import 'package:studycate/pages/groupDash.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -59,13 +62,38 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
+        floatingActionButton: GestureDetector(
+          onTap: () {
+            Navigator.of(context).pushNamed('/createGroup');
+          },
+          child: Container(
+            height: 60.0,
+            width: 60.0,
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(15)),
+              gradient: LinearGradient(
+                colors: [themeColor, darkerThemeColor],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
+            ),
+            child: const Padding(
+              padding: const EdgeInsets.all(0.0),
+              child: Center(child: Icon(Icons.add)),
+            ),
+          ),
+        ),
         backgroundColor: Colors.transparent,
         body: Padding(
           padding: const EdgeInsets.only(top: 45, left: 24, right: 24),
           child: ListView.separated(
             itemBuilder: (context, index) {
               return ListTile(
-                onTap: () {},
+                onTap: () {
+                  GroupDashPage grp = GroupDashPage(group: groups[index]);
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) => grp));
+                },
                 contentPadding: const EdgeInsets.symmetric(horizontal: 24),
                 shape: RoundedRectangleBorder(
                   side: const BorderSide(width: 2),

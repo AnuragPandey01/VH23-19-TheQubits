@@ -1,3 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:convert';
+
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 class User {
   final String? id;
   final String? firstName;
